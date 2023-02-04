@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  redis:
+    image: redis
+    command: redis-server --save 60 1 --loglevel warning
+
+    
+  redis-commander:
+    image: rediscommander/redis-commander
+
+    ports:
+     - 8081:8081
+    environment: 
+     - REDIS_HOSTS=local:redis:6379
+
+
+#networks:
+ # redis_net:
+   #driver: bridge
